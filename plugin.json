@@ -1,0 +1,12 @@
+{
+  "name": "Live Calls",
+  "author": "Chad Smith <chad@nospam.me>",
+  "description": "Modify live calls",
+  "url": "http://twitter.com/chadsmith",
+  "links" : [{
+    "menu" : "admin",
+    "url" : "calls",
+    "script" : "calls.php",
+    "label" : "Live Calls"
+  }]
+}
