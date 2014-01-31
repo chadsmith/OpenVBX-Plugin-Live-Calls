@@ -18,7 +18,7 @@ if(isset($_GET['json'])):
   ));
   $res = array();
   foreach($calls as $call)
-    if(!empty($call->to) && !empty($call->from))
+    if(in_array($call->direction, array('inbound', 'outbound-api')) && !empty($call->to) && !empty($call->from))
       $res[$call->sid] = array(
         'to' => $call->to_formatted,
         'from' => $call->from_formatted,
