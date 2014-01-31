@@ -18,12 +18,13 @@ if(isset($_GET['json'])):
   ));
   $res = array();
   foreach($calls as $call)
-    $res[$call->sid] = array(
-      'to' => $call->to_formatted,
-      'from' => $call->from_formatted,
-      'time' => date('j-M-y g:i:sa', strtotime($call->start_time)),
-      'duration' => $call->duration
-    );
+    if(!empty($call->to) && !empty($call->from))
+      $res[$call->sid] = array(
+        'to' => $call->to_formatted,
+        'from' => $call->from_formatted,
+        'time' => date('j-M-y g:i:sa', strtotime($call->start_time)),
+        'duration' => $call->duration
+      );
   die(json_encode($res));
 endif;
 OpenVBX::addJS('calls.js');
@@ -59,7 +60,7 @@ OpenVBX::addJS('calls.js');
       <p class="header">
         <span>To</span>
         <span>From</span>
-        <span>Duration</span>
+        <span>Time</span>
         <span>Redirect</span>
       </p>
     </div>
